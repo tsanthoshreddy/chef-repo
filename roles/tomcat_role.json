@@ -1,0 +1,22 @@
+{
+  "name": "java-appserver-small",
+  "default_attributes": {},
+  "override_attributes": {
+    "java": {
+      "jdk_version": "7"
+    },
+    "oracle": {
+      "accept_oracle_download_terms": true
+    },
+    "tomcat": {
+      "java_options": "${JAVA_OPTS} -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms512m -Xmx3g -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:+DisableExplicitGC -XX:+CMSClassUnloadingEnabled"
+    }
+  },
+  "json_class": "Chef::Role",
+  "description": "Role for Java Apps Servers using OpenJDK7 - 15GB Memory",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[java]",
+    "recipe[tomcat]"
+  ]
+}
